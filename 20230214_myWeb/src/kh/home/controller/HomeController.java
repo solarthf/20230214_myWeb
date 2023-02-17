@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kh.board.model.service.BoardService;
+
 /**
  * Servlet implementation class HomeController
  */
@@ -27,7 +29,8 @@ public class HomeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 2. DB 갔다와서 게시글 불러오기
-		request.setAttribute("boardlist", "");
+		// DTO, DAO, Service, Controller, view 
+		request.setAttribute("boardlist", new BoardService().getBoardList());
 		request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
 	}
 
